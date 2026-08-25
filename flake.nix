@@ -10,9 +10,13 @@
 
     niri.url = "github:sodiboo/niri-flake";
     inir.url = "github:snowarch/inir";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs"; # Giữ chung một phiên bản nixpkgs
+    };
   };
 
-  outputs = { self, nixpkgs, disko, preservation, niri, inir, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       modules = [
@@ -25,6 +29,14 @@
         ./configuration.nix
         ./preservation.nix
         ./disko.nix
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; } #If you want access to inputs in your home.nix
+            users.<USERNAME> = ./home.nix; # replace <USERNAME> with your actual username
+          };
+        }
       ];
     };
   };
