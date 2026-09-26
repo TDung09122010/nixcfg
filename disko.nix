@@ -23,7 +23,7 @@
       };
 
       swap = {
-        size = "8G";
+        size = "16G";
 
         content = {
           type = "swap";
@@ -46,7 +46,7 @@
             };
 
             "/nix" = {
-              mountOptions = [ "subvol=nix" "noatime" "compress=zstd" "ssd" "discard" "space_cache=v2" "nodatacow" "nodatasum" ];
+              mountOptions = [ "subvol=nix" "noatime" "compress=zstd" "ssd" "discard" "space_cache=v2" "nodatasum" ];
               mountpoint = "/nix";
             };
 
