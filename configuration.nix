@@ -47,9 +47,6 @@
     mplus-outline-fonts.githubRelease
   ];
 
-  time.hardwareClockInLocalTime = false; 
-  environment.variables.TZDIR = lib.mkForce "/etc/zoneinfo";
-
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -203,10 +200,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  virtualisation.waydroid.enable = true;
-  # Newer kernel versions may need
-  virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

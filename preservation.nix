@@ -11,7 +11,6 @@
         "/var/lib/systemd/coredump"
         "/var/lib/systemd/rfkill"
         "/var/lib/systemd/timers"
-        "/var/lib/waydroid/"
 
         {
           directory = "/var/log";
@@ -36,7 +35,6 @@
         directories = [
           ".config/mozilla"
           ".config/thorium"
-          ".local/share/waydroid"
         ];
 
         files = [

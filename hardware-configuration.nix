@@ -21,11 +21,21 @@
     "sd_mod"
     "sr_mod"
     "rtsx_usb_sdmmc"
+    "lz4"
+    "lz4_hc"
   ];
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.zswap = {
+    enable = true;
+    # And optionally configure further:
+    maxPoolPercent = 40;
+    shrinkerEnabled = true;
+    compressor = "zstd";
+    acceptThresholdPercent = 90;
+  };
 
   boot.initrd.systemd = {
     enable = true;
